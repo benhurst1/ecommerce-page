@@ -36,14 +36,14 @@ function ItemDescription() {
         </div>
 
         {/* buttons */}
-        <div className="flex gap-2">
+        <div className="w-full flex gap-4">
             <div className="w-[30%] flex justify-between p-3 bg-gray-100 rounded-md font-bold">
                 <button className="text-orange-500">-</button>
                 {qty}
                 <button className="text-orange-500">+</button>
             </div>
         <button onClick={handleAddToCart}
-        className="w-[45%] h-[50px] bg-orange-400 p-2 text-sm rounded-md text-white flex font-semibold justify-center"
+        className="w-[50%] h-[50px] bg-orange-400 text-sm rounded-md text-white flex    font-semibold justify-center items-center gap-2 "
         >
             <img src="./images/icon-cart.svg" alt="" className=" brightness-200 contrast-80 w-5"/>
           Add to cart 
