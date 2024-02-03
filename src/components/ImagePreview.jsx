@@ -15,21 +15,21 @@ export default function ImagePreview({ setIsOpen }) {
   }
 
   return (
-    <div className="flex flex-col gap-10 ">
+    <div className="w-[50%] flex flex-col gap-10 ">
       <img
         className="rounded-3xl"
         src={image}
         alt=""
-        width={520}
+        width={450}
         onClick={() => setIsOpen(true)}
       />
-      <div className="flex gap-10">
+      <div className="flex gap-9">
         {imagePaths.map((path) => (
           <img
             className="rounded-xl bg-white hover:outline outline-orange-500 outline-2 hover:opacity-50"
             onClick={() => handleClick(`${path}.jpg`)}
             height={20}
-            width={100}
+            width={85}
             src={`${path}-thumbnail.jpg`}
             key={path}
           />

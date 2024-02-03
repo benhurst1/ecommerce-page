@@ -26,7 +26,7 @@ export default function Header() {
           <img src="./images/image-avatar.png" alt="" height={60} width={60} />
         </div>
       </header>
-      <hr className="shadow" />
+      <hr className="shadow w-full" />
     </>
   );
 }

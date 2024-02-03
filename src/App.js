@@ -9,8 +9,8 @@ function App() {
 
   return (
     <main>
-      <div className="absolute h-full w-full bg-black opacity-50">Hello</div>
-      <div className="px-20">
+      {/* <div className="absolute h-full w-full bg-black opacity-50">Hello</div> */}
+      <div className="w-screen px-20 flex flex-col items-center">
         <Header />
         <MainDisplay setIsOpen={setIsOpen} />
       </div>
