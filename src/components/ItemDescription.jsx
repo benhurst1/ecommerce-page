@@ -1,49 +1,58 @@
-import { useContext, useEffect, useState } from "react";
-import { Busket } from "../lib/AppContext.jsx";
+import { useContext } from "react";
+import { AppContext } from "../lib/AppContext.jsx";
+import { item } from "../lib/constants.jsx";
 
 function ItemDescription() {
-    const {cart, modifyCart} = useContext(Busket);
-    const [qty, setQty] = useState(0);
-
-  const handleAddToCart = () => {
-    modifyCart({
-      id: "1234",
-      qty: 1,
-      image: "",
-      price: 0
-    })
-  }
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart])
+    const {cart, addItemToCart, modifyCart} = useContext(AppContext);
 
   return (
-    <div className="w-[35%] mt-20 flex flex-col gap-6">
-        <span className="text-orange-500 text-md font-bold">SNEAKER COMPANY</span>
+    <div className="lg:w-[35%] max-md:w-[50%] lg:mt-20 flex flex-col sm:gap-6 w-full max-sm:p-5 max-sm:gap-4">
+        <span className="text-orange-500 text-md font-bold">{item.company.toUpperCase()}</span>
 
-        <h1 className=" text-4xl font-bold text-black">Fall Limited Edition Sneakers</h1>
+        <h1 className=" sm:text-4xl max-sm:text-3xl font-bold text-black">{item.name}</h1>
 
-        <p className="text-md text-gray-400">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they&apos;ll withstand everything the weather can offer. </p>
+        <p className="sm:text-md max-sm:text-sm text-gray-400">{item.description}</p>
 
         {/* price */}
-        <div >
-            <div className="flex gap-5 font-bold">
-                <span className="text-xl text-black">$125.00</span>
-                <span className="text-sm text-orange-500 bg-orange-300 bg-opacity-50 rounded-md flex items-center justify-center px-1">50%</span>
+        <div className="flex sm:flex-col max-sm:flex-row max-sm:justify-between max-sm:items-center">
+            <div className="flex sm:gap-5 max-sm:gap-3 font-bold">
+                <span className="text-2xl text-black">${item.price}</span>
+                <span className="text-sm text-orange-500 bg-orange-300 bg-opacity-50 rounded-md flex items-center justify-center px-1">{100 / (item.originalPrice / item.price)}%</span>
             </div>
-            <span className="text-sm text-gray-400 line-through">$250.00</span>
+            <span className="text-sm text-gray-400 line-through">${item.originalPrice}</span>
         </div>
 
         {/* buttons */}
-        <div className="flex gap-2">
-            <div className="w-[30%] flex justify-between p-3 bg-gray-100 rounded-md font-bold">
-                <button className="text-orange-500">-</button>
-                {qty}
-                <button className="text-orange-500">+</button>
+        <div className="flex gap-2 sm:flex-row max-sm:flex-col">
+            <div className="sm:w-[30%] max-sm:w-full flex justify-between p-3 bg-gray-100 rounded-md font-bold">
+                <button 
+                  onClick={() => {
+                    modifyCart(item, false, true);
+                  }}
+                 className="text-orange-500"
+                >
+                  <img src="/images/icon-minus.svg" alt="deduct product quantity by one" />
+                </button>
+                <span>
+                 {cart.length ? cart.map(product => {
+                  if (product.id === item.id) {
+                    return product.qty;
+                  }
+                 }) : 0}
+                </span>
+                <button 
+                onClick={() => {
+                  modifyCart(item, true, false);
+                }}
+                className="text-orange-500"
+                >
+                  <img src="/images/icon-plus.svg" alt="increment product quantity by one" />
+                </button>
             </div>
-        <button onClick={handleAddToCart}
-        className="w-[70%] h-[50px] bg-orange-400 p-2 text-sm rounded-md text-white flex font-semibold justify-center items-center gap-2"
+        <button onClick={() => {
+          addItemToCart(item);
+        }}
+        className="sm:w-[70%] max-sm:w-full h-[50px] bg-orange-500 hover:bg-orange-400 p-2 text-sm rounded-md text-white flex font-semibold justify-center items-center gap-2"
         >
           <img src="./images/icon-cart.svg" alt="" className=" brightness-200 contrast-80 w-5"/>
           <span>

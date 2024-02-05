@@ -1,20 +1,17 @@
-import { useState } from "react";
 import Header from "./components/Header";
+import ItemPreview from "./components/ItemPreview";
 import MainDisplay from "./components/MainDisplay";
+import MobileNavigation from "./components/MobileNavigation";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function openDialog() {
-    setIsOpen(!isOpen);
-  }
 
   return (
     <main>
-      {/* <div className="absolute h-full w-full bg-black opacity-50">Hello</div> */}
-      <div className="w-screen px-20 flex flex-col items-center">
+      <div className="w-screen h-screen lg:px-20 sm:px-15 flex flex-col items-center z-0 relative transition-all duration-300 ease-in-out ">
         <Header />
-        <MainDisplay setIsOpen={openDialog} />
+        <MainDisplay />
+        <ItemPreview />
+        <MobileNavigation />
       </div>
     </main>
   );

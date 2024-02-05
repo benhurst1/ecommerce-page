@@ -2,11 +2,11 @@
 import ImagePreview from "./ImagePreview";
 import ItemDescription from "./ItemDescription";
 
-export default function MainDisplay({ setIsOpen }) {
+export default function MainDisplay() {
   
   return (
-    <div className="w-[80%] flex mt-10 justify-around ">
-      <ImagePreview setIsOpen={setIsOpen} />
+    <div className="w-full sm:w-[80%] flex sm:mt-10 sm:justify-around sm:mb-10 max-sm:flex-col max-lg:gap-10  max-sm:gap-0">
+      <ImagePreview />
       <ItemDescription />
     </div>
   );
